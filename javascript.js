@@ -1,3 +1,5 @@
+// The variables of stage 1
+var liveLeft ;
 var playing = false;
 var score;
 
@@ -18,10 +20,17 @@ $(function() {
             // show the "Lives box"
 //            $("#lives").show();
             $("#lives").css('visibility', 'visible');
+            liveLeft = 3;
+            addHearts();
         }
     });
 });
 
+function addHearts() {
+    for(i=0; i<liveLeft ; i++) {
+        $("#lives").append(" X ");
+    }
+}
 
 // Click the "Start" button
     // Are we playing?
