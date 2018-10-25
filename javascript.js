@@ -26,9 +26,10 @@ $(function() {
     });
 });
 
+// Give the heart image on the health bar
 function addHearts() {
     for(i=0; i<liveLeft ; i++) {
-        $("#lives").append(" X ");
+        $("#lives").append('<img src="image/7fifKt.png" class="life">');
     }
 }
 

@@ -29,11 +29,23 @@ html {
     height: 40px;
     background-color: #37c435;
     margin: 0px 10px;
+    box-shadow: 0px 2px black;
 /*    position:fixed;*/
     visibility: hidden;
 /*    display: none;*/
     
 }
+
+.life{
+    width: 37px;
+    margin: 2px 10px;
+}
+
+/*
+.life: {
+    
+}
+*/
 
 #screen {
     width: 600px;
