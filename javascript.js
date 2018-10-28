@@ -47,22 +47,25 @@ function start() {
 // Start sending fruit
 function chooseItems() {
     // Fruit that kid love to eat (+1) 1-17
-    $("#fruit1").attr('src', 'image/fruits/apple_1e8u1T.png');
+    $("#fruit1").attr('src', 'image/fruits/'+ fruits[26] +'.png');
     
     
-    // Vegetables that kid do not like (-1) 18+23
+    // Vegetables that kid do not like (-1) --18+23
     
     
-    // Pitaya (+10) (Extra rare and fast, appear 5 times in 120 minute) - 17
+    // Pitaya (+10) (Extra rare and fast, appear 5 times in 120 minute) --17
     
-    // Sock(-3) (Appear 15 times in 120 minutes) -24
+    // Sock(-3) (Appear 15 times in 120 minutes) --24
     
-    // Bomb(lose right away) (Appear 10 times in 120 minutes) - 25
+    // Bomb(lose right away) (Appear 10 times in 120 minutes) --25
     
-    // Hearts(extra lives) (Appear 3 times in 120 minutes) - 26
+    // Hearts(extra lives) (Appear 3 times in 120 minutes) --26
+    
+    
+    
     
     // Style for the class of the image
-    $(".items").width("40px");
+    $(".items").width("70px");
 }
 
 // Click the "Start" button
