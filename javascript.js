@@ -2,7 +2,7 @@
 var liveLeft ;
 var playing = false;
 var score;
-var fruits;
+var fruits = ['apple_1e8u1T', 'blackberry_6oWOLV', 'banana_6cdZC1', 'cherry_6nVY4b', 'coconut_97k3sb', 'grape_5Xnl8f', 'jackfruit_1rxHXt', 'lemon_03HjVF', 'lime_4GlEZI', 'mango_9N759Q', 'orange_0OHXv3', 'melon_7Jwnka', 'papaya_09ewxR', 'peach_8pOqZW', 'pineapple_3WCJG2', 'rasberry_620MbM', 'strawberry_44KLr1', 'pitaya_3mQ0vM', 'tomato_7dWxtx', 'durian_3zx2N0', 'carrot_2EOIRh', 'broccoli_8laV5x', 'asparagus_0ZuVdD', 'spinach_9af6jV', 'sock_8GYusW', 'bomb_3rdKRe', 'heart_4wc2Ef'];
 
 $(function() {
     // Click the "Start" button
@@ -46,20 +46,20 @@ function start() {
 
 // Start sending fruit
 function chooseItems() {
-    // Fruit that kid love to eat (+1)
+    // Fruit that kid love to eat (+1) 1-17
     $("#fruit1").attr('src', 'image/fruits/apple_1e8u1T.png');
     
     
-    // Vegetables that kid do not like (-1)
-    $("#fruit1").attr('src', 'image/fruits/asparagus_0ZuVdD.png');
+    // Vegetables that kid do not like (-1) 18+23
     
-    // Pitaya (+10) (Extra rare and fast, appear 5 times in 120 minute)
     
-    // Sock(-3) (Appear 15 times in 120 minutes)
+    // Pitaya (+10) (Extra rare and fast, appear 5 times in 120 minute) - 17
     
-    // Bomb(lose right away) (Appear 10 times in 120 minutes)
+    // Sock(-3) (Appear 15 times in 120 minutes) -24
     
-    // Hearts(extra lives) (Appear 3 times in 120 minutes)
+    // Bomb(lose right away) (Appear 10 times in 120 minutes) - 25
+    
+    // Hearts(extra lives) (Appear 3 times in 120 minutes) - 26
     
     // Style for the class of the image
     $(".items").width("40px");
