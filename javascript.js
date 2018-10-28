@@ -13,6 +13,7 @@ $(function() {
             location.reload();
         } else {
             // No
+            $("#startReset").html("Reset Game");
             playing = true;
             score = 0;
             $("#scorevalue").html(score);
