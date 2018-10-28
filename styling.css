@@ -81,10 +81,11 @@ html {
     box-shadow: 0px 3px #681265;
     margin-left: 250px;
     position: relative;
-    cursor:pointer;
+/*    cursor:pointer;*/
     
 }
 
+/*
 #catch:hover {
     text-transform: uppercase;
     background-color: #8211f4;
@@ -95,6 +96,7 @@ html {
     box-shadow: 0px 0px black;
     top: 3px;
 }
+*/
 
 #startReset {
     width: 120px;
