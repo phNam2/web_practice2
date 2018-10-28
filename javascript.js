@@ -47,7 +47,7 @@ function start() {
 // Start sending fruit
 function chooseItems() {
     // Fruit that kid love to eat (+1) 1-17
-    $("#fruit1").attr('src', 'image/fruits/'+ fruits[26] +'.png');
+    $("#fruit1").attr('src', 'image/fruits/'+ fruits[Math.floor((Math.random() * 27) + 0)] +'.png');
     
     
     // Vegetables that kid do not like (-1) --18+23
