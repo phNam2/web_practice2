@@ -58,6 +58,10 @@ html {
     border-radius: 20px;
 }
 
+.fruit {
+    display: none;
+}
+
 #over {
     width: 400px;
     height: 180px;

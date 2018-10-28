@@ -2,6 +2,7 @@
 var liveLeft ;
 var playing = false;
 var score;
+var fruits;
 
 $(function() {
     // Click the "Start" button
@@ -38,13 +39,19 @@ function addHearts() {
     }
 }
 
-// Start sending fruit
 function start() {
+    $("#fruit1").show();
+    chooseItems(); //Choose random fruits and items
+}
+
+// Start sending fruit
+function chooseItems() {
     // Fruit that kid love to eat (+1)
-    $("#screen").append('<img src="image/fruits/apple_1e8u1T.png" class="items">');
+    $("#fruit1").attr('src', 'image/fruits/apple_1e8u1T.png');
+    
     
     // Vegetables that kid do not like (-1)
-    $("#screen").append('<img src="image/fruits/asparagus_0ZuVdD.png" class="items">');
+    $("#fruit1").attr('src', 'image/fruits/asparagus_0ZuVdD.png');
     
     // Pitaya (+10) (Extra rare and fast, appear 5 times in 120 minute)
     
@@ -52,7 +59,7 @@ function start() {
     
     // Bomb(lose right away) (Appear 10 times in 120 minutes)
     
-    // Hearts(extra lives) (Appear  times in 120 minutes)
+    // Hearts(extra lives) (Appear 3 times in 120 minutes)
     
     // Style for the class of the image
     $(".items").width("40px");
