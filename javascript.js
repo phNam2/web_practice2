@@ -13,6 +13,7 @@ $(function() {
             location.reload();
         } else {
             // No
+            // change the "Start" button to "Reset" button
             $("#startReset").html("Reset Game");
             playing = true;
             score = 0;
@@ -23,6 +24,9 @@ $(function() {
             $("#lives").css('visibility', 'visible');
             liveLeft = 3;
             addHearts();
+            
+            // Create random fruit
+            start();
         }
     });
 });
@@ -32,6 +36,26 @@ function addHearts() {
     for(i=0; i<liveLeft ; i++) {
         $("#lives").append('<img src="image/heart.gif" class="life">');
     }
+}
+
+// Start sending fruit
+function start() {
+    // Fruit that kid love to eat (+1)
+    $("#screen").append('<img src="image/fruits/apple_1e8u1T.png" class="items">');
+    
+    // Vegetables that kid do not like (-1)
+    $("#screen").append('<img src="image/fruits/asparagus_0ZuVdD.png" class="items">');
+    
+    // Pitaya (+10) (Extra rare and fast, appear 5 times in 120 minute)
+    
+    // Sock(-3) (Appear 15 times in 120 minutes)
+    
+    // Bomb(lose right away) (Appear 10 times in 120 minutes)
+    
+    // Hearts(extra lives) (Appear  times in 120 minutes)
+    
+    // Style for the class of the image
+    $(".items").width("40px");
 }
 
 // Click the "Start" button
