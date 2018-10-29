@@ -22,6 +22,8 @@ $(function() {
             score = 0;
             $("#scorevalue").html(score);
             
+            $("#over").hide();
+            
             // show the "Lives box"
 //            $("#lives").show();
             $("#lives").css('visibility', 'visible');
@@ -40,6 +42,13 @@ function addHearts() {
         $("#lives").append('<img src="image/heart.gif" class="life">');
     }
 }
+
+// Delete the heart when the player miss an neceessary item
+function reduceHearts() {
+    liveLeft -= 1;
+//    $("#lives").re .append('<img src="image/heart.gif" class="life">');
+}
+
 
 function start() {
     $("#fruit1").show();
@@ -60,11 +69,34 @@ function start() {
         $("#fruit1").css('top', height);
         //Is the fruit too low?
         if (height > 400) {
-            //Yes
-            $("#fruit1").hide();
-            score -= 1;
-            $("#scorevalue").html(score);
-            stopImage();
+//            //Yes
+//            
+//            // Reduce score when you miss neceessary item
+//            score -= 1;
+//            $("#scorevalue").html(score);
+            if (liveLeft > 1) {
+                $("#fruit1").show();
+                chooseItems(); //Choose random fruits and items
+                // Choose the random place the fruit will appear
+   
+                height = -90;
+                pos = Math.floor((Math.random() * 520) + 0);
+                $("#fruit1").css({'left':pos, 'top':height});
+    
+                // generate random step
+                step = Math.floor((Math.random() * 5) + 1);
+                
+                // Reduce the live left
+                liveLeft -= 1;
+            }
+            else { // Game over
+                playing = false;
+                $("#startReset").html("Start Game");
+                $("#over").show();
+                $(".result").html(score);
+                $("#lives").css('visibility', 'hidden');
+                stopImages();
+            }
         }
     }, 10);
 }
@@ -72,6 +104,7 @@ function start() {
 // Stop the clock
 function stopImage() {
     clearInterval(action);
+    $("#fruit1").hide();
 }
 
 // Start sending fruit
