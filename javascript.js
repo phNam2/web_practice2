@@ -170,4 +170,9 @@ $("#fruit1").mouseover(function(){
     // Play the slicing sound effect
 //    document.getElementById("audio").play();
     $("audio")[0].play();
+    
+    // Start the next fruits
+    stopImages();
+    start();
+    
 });
