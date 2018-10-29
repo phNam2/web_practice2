@@ -75,7 +75,6 @@ html {
     overflow: hidden;
     position: relative;
     cursor: url('image/knife.cur'),auto;
-/*    cursor: pointer;*/
 }
 
 .items {

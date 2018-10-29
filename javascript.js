@@ -163,7 +163,11 @@ function chooseItems() {
     // Play sound exploded fruit
     // Increase the point
 $("#fruit1").mouseover(function(){
+    // Inxrease score.
     score += 1;
     $("#scorevalue").html(score);
     
+    // Play the slicing sound effect
+//    document.getElementById("audio").play();
+    $("audio")[0].play();
 });
