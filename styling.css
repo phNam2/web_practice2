@@ -66,17 +66,19 @@ html {
 }
 
 #over {
-    width: 400px;
-    height: 180px;
+    width: 620px;
+    height: 455px;
     background: linear-gradient(#ef584a, #ed1502);
-    font-size: 30px;
-    line-height: 1.5;
+    font-size: 60px;
+    line-height: 2;
     text-align: center;
     position: absolute;
     z-index: 2;
-    top: 150px;
-    margin: auto 200px;
+    top: 70px;
+    left: 110px;
+    margin: auto;
     display: none;
+    border-radius: 20px;
 }
 
 #catch {
