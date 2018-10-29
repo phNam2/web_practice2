@@ -2,6 +2,8 @@
 var liveLeft ;
 var playing = false;
 var score;
+var step;
+var action;
 var fruits = ['apple_1e8u1T', 'blackberry_6oWOLV', 'banana_6cdZC1', 'cherry_6nVY4b', 'coconut_97k3sb', 'grape_5Xnl8f', 'jackfruit_1rxHXt', 'lemon_03HjVF', 'lime_4GlEZI', 'mango_9N759Q', 'orange_0OHXv3', 'melon_7Jwnka', 'papaya_09ewxR', 'peach_8pOqZW', 'pineapple_3WCJG2', 'rasberry_620MbM', 'strawberry_44KLr1', 'pitaya_3mQ0vM', 'tomato_7dWxtx', 'durian_3zx2N0', 'carrot_2EOIRh', 'broccoli_8laV5x', 'asparagus_0ZuVdD', 'spinach_9af6jV', 'sock_8GYusW', 'bomb_3rdKRe', 'heart_4wc2Ef'];
 
 $(function() {
@@ -42,8 +44,21 @@ function addHearts() {
 function start() {
     $("#fruit1").show();
     chooseItems(); //Choose random fruits and items
-    // Choose the random place the fruit will appeared
-    $("#fruit1").css({'left':Math.floor((Math.random() * 520) + 0), 'top':-10});
+    // Choose the random place the fruit will appeare
+   
+    var height = -90;
+    var pos = Math.floor((Math.random() * 520) + 0);
+    $("#fruit1").css({'left':pos, 'top':height});
+    
+    // generate random step
+    step = Math.floor((Math.random() * 5) + 1);
+    
+    //Move fruit down one step every 10ms
+    action = setInterval(function(){
+        height += step;
+//        $("#fruit1").css('top', $("#fruit1").position().top+step);
+        $("#fruit1").css('top', height);
+    }, 10);
 }
 
 // Start sending fruit
