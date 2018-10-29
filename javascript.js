@@ -58,7 +58,20 @@ function start() {
         height += step;
 //        $("#fruit1").css('top', $("#fruit1").position().top+step);
         $("#fruit1").css('top', height);
+        //Is the fruit too low?
+        if (height > 400) {
+            //Yes
+            $("#fruit1").hide();
+            score -= 1;
+            $("#scorevalue").html(score);
+            stopImage();
+        }
     }, 10);
+}
+
+// Stop the clock
+function stopImage() {
+    clearInterval(action);
 }
 
 // Start sending fruit
