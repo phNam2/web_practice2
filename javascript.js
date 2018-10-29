@@ -90,12 +90,10 @@ function start() {
                 liveLeft -= 1;
             }
             else { // Game over
-
                 $("#startReset").html("Start Game");
                 $("#over").show();
                 $(".result").html(score);
                 $("#lives").css('visibility', 'hidden');
-                $("#lives").remove(".life");
                 stopImages();
             }
         }
