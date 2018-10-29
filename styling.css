@@ -6,10 +6,10 @@ html {
 
 #container {
     width: 800px;
-    height: 550px;
+    height: 580px;
     background-color: #564e4e;
     padding: 20px;
-    margin: 30px auto;
+    margin: 30px auto 0px;
     position: relative;
     border-radius: 20px;
 }
@@ -31,9 +31,25 @@ html {
     background-color: #119b33;
     margin: 0px 10px;
     box-shadow: 0px 2px black;
-/*    position:fixed;*/
     visibility: hidden;
 /*    display: none;*/
+    
+}
+
+#time {
+    width: 80px;
+    height: 40px;
+    background-color: #ff0800;
+    color: white;
+    top: 495px;
+    left: 700px;
+    margin: 0px 10px;
+    box-shadow: 0px 2px black;
+    position:absolute;
+    text-align: center;
+    line-height: 2.5;
+/*    visibility: hidden;*/
+    display: none;
     
 }
 
@@ -53,7 +69,7 @@ html {
     height: 400px;
     background-color: white;
 /*    position:absolute;*/
-    margin: 10px auto 10px auto;
+    margin: 20px auto 10px auto;
     box-shadow: 2px 3px #b5aaaa;
     border-radius: 20px;
     overflow: hidden;
@@ -67,7 +83,7 @@ html {
 
 #over {
     width: 620px;
-    height: 455px;
+    height: 465px;
     background: linear-gradient(#ef584a, #ed1502);
     font-size: 60px;
     line-height: 2;

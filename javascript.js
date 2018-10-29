@@ -1,9 +1,11 @@
 // The variables of stage 1
 var liveLeft ;
+var timeRemaining;
 var playing = false;
 var score;
 var step;
 var action;
+var actionTime;
 var fruits = ['apple_1e8u1T', 'blackberry_6oWOLV', 'banana_6cdZC1', 'cherry_6nVY4b', 'coconut_97k3sb', 'grape_5Xnl8f', 'jackfruit_1rxHXt', 'lemon_03HjVF', 'lime_4GlEZI', 'mango_9N759Q', 'orange_0OHXv3', 'melon_7Jwnka', 'papaya_09ewxR', 'peach_8pOqZW', 'pineapple_3WCJG2', 'rasberry_620MbM', 'strawberry_44KLr1', 'pitaya_3mQ0vM', 'tomato_7dWxtx', 'durian_3zx2N0', 'carrot_2EOIRh', 'broccoli_8laV5x', 'asparagus_0ZuVdD', 'spinach_9af6jV', 'sock_8GYusW', 'bomb_3rdKRe', 'heart_4wc2Ef'];
 
 $(function() {
@@ -30,11 +32,32 @@ $(function() {
             liveLeft = 3;
             addHearts();
             
+            // Add the time inside the game
+            timeRemaining = 120;
+            $("#time").show();
+            $("#timeLeft").html(timeRemaining);
+            startCounting();
+            
             // Create random fruit
             start();
         }
     });
 });
+
+function startCounting(){
+    actionTime = setInterval(function(){
+        timeRemaining -= 1;
+        $("#timeLeft").html(timeRemaining);
+        if (timeRemaining <= 0) {
+            stopCounting();
+            gameOver();
+        }
+    }, 1000);
+}
+
+function stopCounting() {
+    clearInterval(actionTime);
+}
 
 // Give the heart image on the health bar
 function addHearts() {
@@ -90,18 +113,23 @@ function start() {
                 liveLeft -= 1;
             }
             else { // Game over
-                $("#startReset").html("Start Game");
-                $("#over").show();
-                $(".result").html(score);
-                $("#lives").css('visibility', 'hidden');
-                stopImages();
+                gameOver();
             }
         }
     }, 10);
 }
 
-// Stop the clock
-function stopImage() {
+// When the game is over
+function gameOver() {
+    $("#over").show();
+    $(".result").html(score);
+    $("#lives").css('visibility', 'hidden');
+    $("#time").hide();
+    stopImages();
+}
+
+// Stop the game image running;
+function stopImages() {
     clearInterval(action);
     $("#fruit1").hide();
 }
