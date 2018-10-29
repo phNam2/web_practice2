@@ -8,6 +8,7 @@ var action;
 var actionTime;
 var fruits = ['apple_1e8u1T', 'blackberry_6oWOLV', 'banana_6cdZC1', 'cherry_6nVY4b', 'coconut_97k3sb', 'grape_5Xnl8f', 'jackfruit_1rxHXt', 'lemon_03HjVF', 'lime_4GlEZI', 'mango_9N759Q', 'orange_0OHXv3', 'melon_7Jwnka', 'papaya_09ewxR', 'peach_8pOqZW', 'pineapple_3WCJG2', 'rasberry_620MbM', 'strawberry_44KLr1', 'pitaya_3mQ0vM', 'tomato_7dWxtx', 'durian_3zx2N0', 'carrot_2EOIRh', 'broccoli_8laV5x', 'asparagus_0ZuVdD', 'spinach_9af6jV', 'sock_8GYusW', 'bomb_3rdKRe', 'heart_4wc2Ef'];
 
+// Starting function
 $(function() {
     // Click the "Start" button
     $("#startReset").click(function() {
@@ -33,7 +34,7 @@ $(function() {
             addHearts();
             
             // Add the time inside the game
-            timeRemaining = 120;
+            timeRemaining = 5;
             $("#time").show();
             $("#timeLeft").html(timeRemaining);
             startCounting();
@@ -44,17 +45,18 @@ $(function() {
     });
 });
 
+// Start the counting clock for the game
 function startCounting(){
     actionTime = setInterval(function(){
         timeRemaining -= 1;
         $("#timeLeft").html(timeRemaining);
         if (timeRemaining <= 0) {
-            stopCounting();
             gameOver();
         }
     }, 1000);
 }
 
+// Stop the counting clock when the game is end 
 function stopCounting() {
     clearInterval(actionTime);
 }
@@ -72,7 +74,7 @@ function reduceHearts() {
 //    $("#lives").re .append('<img src="image/heart.gif" class="life">');
 }
 
-
+// Start the game items drop
 function start() {
     $("#fruit1").show();
     chooseItems(); //Choose random fruits and items
@@ -92,18 +94,18 @@ function start() {
         $("#fruit1").css('top', height);
         //Is the fruit too low?
         if (height > 400) {
-//            //Yes
-//            
-//            // Reduce score when you miss neceessary item
-//            score -= 1;
-//            $("#scorevalue").html(score);
+            //Yes
+            // Reduce score when you miss neceessary item
+            score -= 1;
+            $("#scorevalue").html(score);
+            // Is the plyer still have lives left
             if (liveLeft > 1) {
                 $("#fruit1").show();
                 chooseItems(); //Choose random fruits and items
                 // Choose the random place the fruit will appear
    
-                height = -90;
-                pos = Math.floor((Math.random() * 520) + 0);
+                height = -90; // The starting height
+                pos = Math.floor((Math.random() * 520) + 0); // The starting position
                 $("#fruit1").css({'left':pos, 'top':height});
     
                 // generate random step
@@ -125,6 +127,7 @@ function gameOver() {
     $(".result").html(score);
     $("#lives").css('visibility', 'hidden');
     $("#time").hide();
+    stopCounting();
     stopImages();
 }
 
