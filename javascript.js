@@ -71,6 +71,7 @@ function addHearts() {
 
 // Start the game items drop
 function start() {
+    
     $("#fruit1").show();
     chooseItems(); //Choose random fruits and items
     // Choose the random place the fruit will appeare
@@ -157,6 +158,16 @@ function chooseItems() {
     $(".items").width("70px");
 }
 
+// Fruits after sliced
+function explodeFruits() {
+    clearInterval(action);
+    // Sliced fruits
+    $("#fruit1").hide("explode", 200);
+    
+    // Get new fruits
+    setTimeout(start, 500);
+}
+
 
 // Slice the fruit
     // Explode fruit
@@ -172,7 +183,5 @@ $("#fruit1").mouseover(function(){
     $("audio")[0].play();
     
     // Start the next fruits
-    stopImages();
-    start();
-    
+    explodeFruits();
 });
