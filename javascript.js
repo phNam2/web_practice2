@@ -8,6 +8,8 @@ var action;
 var actionTime;
 var fruits = ['apple_1e8u1T', 'pitaya_3mQ0vM', 'banana_6cdZC1', 'cherry_6nVY4b', 'coconut_97k3sb', 'grape_5Xnl8f', 'jackfruit_1rxHXt', 'lemon_03HjVF', 'lime_4GlEZI', 'mango_9N759Q', 'orange_0OHXv3', 'melon_7Jwnka', 'papaya_09ewxR', 'peach_8pOqZW', 'pineapple_3WCJG2', 'rasberry_620MbM', 'strawberry_44KLr1', 'tomato_7dWxtx', 'durian_3zx2N0', 'carrot_2EOIRh', 'broccoli_8laV5x', 'asparagus_0ZuVdD', 'spinach_9af6jV', 'sock_8GYusW', 'bomb_3rdKRe', 'blackberry_6oWOLV', 'heart_4wc2Ef'];
 
+var fruitN1;
+
 // Starting function
 $(function() {
     // Click the "Start" button
@@ -133,7 +135,8 @@ function stopImages() {
 // Start sending fruit
 function chooseItems() {
     // Fruit that kid love to eat (+1) 1-17
-    $("#fruit1").attr('src', 'image/fruits/'+ fruits[Math.floor((Math.random() * 27) + 0)] +'.png');
+    fruitN1 = Math.floor((Math.random() * 27) + 0);
+    $("#fruit1").attr('src', 'image/fruits/'+ fruits[fruitN1] +'.png');
     
     
     // Vegetables that kid do not like (-1) --18+23
