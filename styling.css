@@ -56,10 +56,13 @@ html {
     margin: 10px auto 10px auto;
     box-shadow: 2px 3px #b5aaaa;
     border-radius: 20px;
+    overflow: hidden;
+    position: relative;
 }
 
-.fruit {
+.items {
     display: none;
+    position: absolute;
 }
 
 #over {

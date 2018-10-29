@@ -42,6 +42,7 @@ function addHearts() {
 function start() {
     $("#fruit1").show();
     chooseItems(); //Choose random fruits and items
+    $("#fruit1").css({'left':300, 'top':-50});
 }
 
 // Start sending fruit
