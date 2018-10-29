@@ -6,7 +6,7 @@ var score;
 var step;
 var action;
 var actionTime;
-var fruits = ['apple_1e8u1T', 'blackberry_6oWOLV', 'banana_6cdZC1', 'cherry_6nVY4b', 'coconut_97k3sb', 'grape_5Xnl8f', 'jackfruit_1rxHXt', 'lemon_03HjVF', 'lime_4GlEZI', 'mango_9N759Q', 'orange_0OHXv3', 'melon_7Jwnka', 'papaya_09ewxR', 'peach_8pOqZW', 'pineapple_3WCJG2', 'rasberry_620MbM', 'strawberry_44KLr1', 'pitaya_3mQ0vM', 'tomato_7dWxtx', 'durian_3zx2N0', 'carrot_2EOIRh', 'broccoli_8laV5x', 'asparagus_0ZuVdD', 'spinach_9af6jV', 'sock_8GYusW', 'bomb_3rdKRe', 'heart_4wc2Ef'];
+var fruits = ['apple_1e8u1T', 'pitaya_3mQ0vM', 'banana_6cdZC1', 'cherry_6nVY4b', 'coconut_97k3sb', 'grape_5Xnl8f', 'jackfruit_1rxHXt', 'lemon_03HjVF', 'lime_4GlEZI', 'mango_9N759Q', 'orange_0OHXv3', 'melon_7Jwnka', 'papaya_09ewxR', 'peach_8pOqZW', 'pineapple_3WCJG2', 'rasberry_620MbM', 'strawberry_44KLr1', 'tomato_7dWxtx', 'durian_3zx2N0', 'carrot_2EOIRh', 'broccoli_8laV5x', 'asparagus_0ZuVdD', 'spinach_9af6jV', 'sock_8GYusW', 'bomb_3rdKRe', 'blackberry_6oWOLV', 'heart_4wc2Ef'];
 
 // Starting function
 $(function() {
@@ -19,8 +19,6 @@ $(function() {
             location.reload();
         } else {
             // No
-            // change the "Start" button to "Reset" button
-            $("#startReset").html("Reset Game");
             playing = true;
             score = 0;
             $("#scorevalue").html(score);
@@ -34,7 +32,7 @@ $(function() {
             addHearts();
             
             // Add the time inside the game
-            timeRemaining = 5;
+            timeRemaining = 120;
             $("#time").show();
             $("#timeLeft").html(timeRemaining);
             startCounting();
@@ -63,15 +61,10 @@ function stopCounting() {
 
 // Give the heart image on the health bar
 function addHearts() {
+    $("#lives").empty();
     for(i=0; i<liveLeft ; i++) {
         $("#lives").append('<img src="image/heart.gif" class="life">');
     }
-}
-
-// Delete the heart when the player miss an neceessary item
-function reduceHearts() {
-    liveLeft -= 1;
-//    $("#lives").re .append('<img src="image/heart.gif" class="life">');
 }
 
 // Start the game items drop
@@ -85,7 +78,7 @@ function start() {
     $("#fruit1").css({'left':pos, 'top':height});
     
     // generate random step
-    step = Math.floor((Math.random() * 5) + 1);
+    step = Math.floor((Math.random() * 3) + 1);
     
     //Move fruit down one step every 10ms
     action = setInterval(function(){
@@ -100,11 +93,10 @@ function start() {
             $("#scorevalue").html(score);
             // Is the plyer still have lives left
             if (liveLeft > 1) {
-                $("#fruit1").show();
                 chooseItems(); //Choose random fruits and items
                 // Choose the random place the fruit will appear
    
-                height = -90; // The starting height
+                height = -190; // The starting height
                 pos = Math.floor((Math.random() * 520) + 0); // The starting position
                 $("#fruit1").css({'left':pos, 'top':height});
     
@@ -113,6 +105,7 @@ function start() {
                 
                 // Reduce the live left
                 liveLeft -= 1;
+                addHearts();// Redraw the heart bar
             }
             else { // Game over
                 gameOver();
@@ -146,7 +139,7 @@ function chooseItems() {
     // Vegetables that kid do not like (-1) --18+23
     
     
-    // Pitaya (+10) (Extra rare and fast, appear 5 times in 120 minute) --17
+    // Blackberry (+10) (Extra rare and fast, appear 5 times in 120 minute) --17
     
     // Sock(-3) (Appear 15 times in 120 minutes) --24
     
