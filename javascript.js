@@ -75,7 +75,7 @@ function start() {
     
     $("#fruit1").show();
     chooseItems(); //Choose random fruits and items
-    // Choose the random place the fruit will appeare
+    // Choose the random place the fruit will appear
    
     var height = -90;
     var pos = Math.floor((Math.random() * 520) + 0);
@@ -137,8 +137,8 @@ function stopImages() {
 // Start sending fruit
 function chooseItems() {
     // Fruit that kid love to eat (+1) 0-16
-//    fruitN1 = Math.floor((Math.random() * 27) + 0);
-    fruitN1 = 26;
+    fruitN1 = Math.floor((Math.random() * 27) + 0);
+//    fruitN1 = 17;
     $("#fruit1").attr('src', 'image/fruits/'+ fruits[fruitN1] +'.png');
 
     // Style for the class of the image
@@ -181,7 +181,7 @@ $("#fruit1").mouseover(function(){
     // Sock(-3) (Appear 15 times in 120 minutes) --23
     else if (fruitN1 == 23) {
         // Decrease score.
-        score -= 5;
+        score -= 3;
         $("#scorevalue").html(score);
         $("#audio1")[0].play();    
     } 
