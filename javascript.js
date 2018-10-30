@@ -188,6 +188,7 @@ $("#fruit1").mouseover(function(){
         score -= 10;
         $("#scorevalue").html(score);
         $("#audio2")[0].play();    
+        
         gameOver();
     } 
     // Blackberry (+10) (Extra rare and fast, appear 5 times in 120 minute) --25
