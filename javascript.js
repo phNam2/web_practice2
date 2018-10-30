@@ -7,6 +7,8 @@ var actionTime;
 var fruits = ['apple_1e8u1T', 'pitaya_3mQ0vM', 'banana_6cdZC1', 'cherry_6nVY4b', 'coconut_97k3sb', 'grape_5Xnl8f', 'jackfruit_1rxHXt', 'lemon_03HjVF', 'lime_4GlEZI', 'mango_9N759Q', 'orange_0OHXv3', 'melon_7Jwnka', 'papaya_09ewxR', 'peach_8pOqZW', 'pineapple_3WCJG2', 'rasberry_620MbM', 'strawberry_44KLr1', 'tomato_7dWxtx', 'durian_3zx2N0', 'carrot_2EOIRh', 'broccoli_8laV5x', 'asparagus_0ZuVdD', 'spinach_9af6jV', 'sock_8GYusW', 'bomb_3rdKRe', 'blackberry_6oWOLV', 'heart_4wc2Ef'];
 
 // The second stage of this project
+var stop = true;
+
 var fruitN1;
 var height1;
 var pos1;
@@ -42,6 +44,7 @@ $(function() {
             $("#timeLeft").html(timeRemaining);
             startCounting();
             
+            stop = false;
             // Create random fruit
             start1();
         }
@@ -87,7 +90,9 @@ function start1() {
             //Yes
             // Reduce score and live when you miss neceessary item
             if (fruitN1<17 || fruitN1>24) {
-                score -= 1;
+                if (stop == false) {
+                    score -= 1;   
+                }
                 $("#scorevalue").html(score);
                 // Is the plyer still have lives left
                 if (liveLeft > 1) {
@@ -187,8 +192,11 @@ $("#fruit1").mouseover(function(){
         // Decrease score.
         score -= 10;
         $("#scorevalue").html(score);
-        $("#audio2")[0].play();    
-        gameOver();
+        $("#audio2")[0].play(); 
+        
+        stop = true;
+        liveLeft = 0;
+        gameOver()
     } 
     // Blackberry (+10) (Extra rare and fast, appear 5 times in 120 minute) --25
     else if (fruitN1 == 25) {
