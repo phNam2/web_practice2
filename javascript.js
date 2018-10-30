@@ -3,15 +3,15 @@ var liveLeft ;
 var timeRemaining;
 var playing = false;
 var score;
-var step;
-var action;
 var actionTime;
 var fruits = ['apple_1e8u1T', 'pitaya_3mQ0vM', 'banana_6cdZC1', 'cherry_6nVY4b', 'coconut_97k3sb', 'grape_5Xnl8f', 'jackfruit_1rxHXt', 'lemon_03HjVF', 'lime_4GlEZI', 'mango_9N759Q', 'orange_0OHXv3', 'melon_7Jwnka', 'papaya_09ewxR', 'peach_8pOqZW', 'pineapple_3WCJG2', 'rasberry_620MbM', 'strawberry_44KLr1', 'tomato_7dWxtx', 'durian_3zx2N0', 'carrot_2EOIRh', 'broccoli_8laV5x', 'asparagus_0ZuVdD', 'spinach_9af6jV', 'sock_8GYusW', 'bomb_3rdKRe', 'blackberry_6oWOLV', 'heart_4wc2Ef'];
 
 // The second stage of this project
 var fruitN1;
-var height;
-var pos;
+var height1;
+var pos1;
+var step1;
+var action1;
 
 // Starting function
 $(function() {
@@ -43,7 +43,7 @@ $(function() {
             startCounting();
             
             // Create random fruit
-            start();
+            start1();
         }
     });
 });
@@ -73,18 +73,17 @@ function addHearts() {
 }
 
 // Start the game items drop
-function start() {
+function start1() {
     
     $("#fruit1").show();
-    movingImages();
+    movingImages("#fruit1");
     
     //Move fruit down one step every 10ms
-    action = setInterval(function(){
-        height += step;
-//        $("#fruit1").css('top', $("#fruit1").position().top+step);
-        $("#fruit1").css('top', height);
+    action1 = setInterval(function(){
+        height1 += step1;
+        $("#fruit1").css('top', height1);
         //Is the fruit too low?
-        if (height > 400) {
+        if (height1 > 400) {
             //Yes
             // Reduce score and live when you miss neceessary item
             if (fruitN1<17 || fruitN1>24) {
@@ -92,7 +91,7 @@ function start() {
                 $("#scorevalue").html(score);
                 // Is the plyer still have lives left
                 if (liveLeft > 1) {
-                    movingImages();
+                    movingImages("#fruit1");
                     // Reduce the live left
                     liveLeft -= 1;
                     addHearts();// Redraw the heart bar
@@ -101,7 +100,7 @@ function start() {
                     gameOver();
                 }   
             } else { // If not, continue playing
-                movingImages();
+                movingImages("#fruit1");
             }
         }
     }, 10);
@@ -114,47 +113,45 @@ function gameOver() {
     $("#lives").css('visibility', 'hidden');
     $("#time").hide();
     stopCounting();
-    stopImages();
+    stopImages("#fruit1");
 }
 
 // Running images
-function movingImages() {
-    chooseItems(); //Choose random fruits and items
+function movingImages(id) {
+    fruitN1 = Math.floor((Math.random() * 27) + 0);
+    chooseItems(id, fruitN1); //Choose random fruits and items
                 
     // Choose the random place the fruit will appear
-    height = -200; // The starting height
-    pos = Math.floor((Math.random() * 520) + 0); // The starting position
-    $("#fruit1").css({'left':pos, 'top':height});
+    height1 = -200; // The starting height
+    pos1 = Math.floor((Math.random() * 520) + 0); // The starting position
+    $(id).css({'left':pos1, 'top':height1});
     
     // generate random step
-    step = Math.floor((Math.random() * 5) + 1);
+    step1 = Math.floor((Math.random() * 5) + 1);
 }
 
 // Stop the game image running;
-function stopImages() {
-    clearInterval(action);
-    $("#fruit1").hide();
+function stopImages(id) {
+    clearInterval(action1);
+    $(id).hide();
 }
 
 // Start sending fruit
-function chooseItems() {
-    // Fruit that kid love to eat (+1) 0-16
-    fruitN1 = Math.floor((Math.random() * 27) + 0);
-//    fruitN1 = 17;
-    $("#fruit1").attr('src', 'image/fruits/'+ fruits[fruitN1] +'.png');
+function chooseItems(id, no) {
+    $(id).attr('src', 'image/fruits/'+ fruits[no] +'.png');
 
     // Style for the class of the image
     $(".items").width("70px");
 }
 
 // Fruits after sliced
-function explodeFruits() {
-    clearInterval(action);
+function explodeFruits(id) {
+    clearInterval(action1);
     // Sliced fruits
-    $("#fruit1").hide("explode", 200);
+    $(id).hide("explode", 200);
     
     // Get new fruits
-    setTimeout(start, 500);
+    setTimeout(start1, 500);
 }
 
 
@@ -163,8 +160,6 @@ function explodeFruits() {
     // Play sound exploded fruit
     // Increase the point
 $("#fruit1").mouseover(function(){
-    // Play the slicing sound effect
-//    document.getElementById("audio").play();
     
     // Fruit that kid love to eat (+1) 0-16
     if (fruitN1 >=0 && fruitN1 <= 16) {
@@ -213,5 +208,5 @@ $("#fruit1").mouseover(function(){
     }
     
     // Start the next items
-    explodeFruits();
+    explodeFruits("#fruit1");
 });
