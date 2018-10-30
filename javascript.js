@@ -10,6 +10,8 @@ var fruits = ['apple_1e8u1T', 'pitaya_3mQ0vM', 'banana_6cdZC1', 'cherry_6nVY4b',
 
 // The second stage of this project
 var fruitN1;
+var height;
+var pos;
 
 // Starting function
 $(function() {
@@ -74,15 +76,7 @@ function addHearts() {
 function start() {
     
     $("#fruit1").show();
-    chooseItems(); //Choose random fruits and items
-    // Choose the random place the fruit will appear
-   
-    var height = -90;
-    var pos = Math.floor((Math.random() * 520) + 0);
-    $("#fruit1").css({'left':pos, 'top':height});
-    
-    // generate random step
-    step = Math.floor((Math.random() * 3) + 1);
+    movingImages();
     
     //Move fruit down one step every 10ms
     action = setInterval(function(){
@@ -92,27 +86,22 @@ function start() {
         //Is the fruit too low?
         if (height > 400) {
             //Yes
-            // Reduce score when you miss neceessary item
-            score -= 1;
-            $("#scorevalue").html(score);
-            // Is the plyer still have lives left
-            if (liveLeft > 1) {
-                chooseItems(); //Choose random fruits and items
-                // Choose the random place the fruit will appear
-   
-                height = -200; // The starting height
-                pos = Math.floor((Math.random() * 520) + 0); // The starting position
-                $("#fruit1").css({'left':pos, 'top':height});
-    
-                // generate random step
-                step = Math.floor((Math.random() * 5) + 1);
-                
-                // Reduce the live left
-                liveLeft -= 1;
-                addHearts();// Redraw the heart bar
-            }
-            else { // Game over
-                gameOver();
+            // Reduce score and live when you miss neceessary item
+            if (fruitN1<17 || fruitN1>24) {
+                score -= 1;
+                $("#scorevalue").html(score);
+                // Is the plyer still have lives left
+                if (liveLeft > 1) {
+                    movingImages();
+                    // Reduce the live left
+                    liveLeft -= 1;
+                    addHearts();// Redraw the heart bar
+                }
+                else { // Game over
+                    gameOver();
+                }   
+            } else { // If not, continue playing
+                movingImages();
             }
         }
     }, 10);
@@ -126,6 +115,19 @@ function gameOver() {
     $("#time").hide();
     stopCounting();
     stopImages();
+}
+
+// Running images
+function movingImages() {
+    chooseItems(); //Choose random fruits and items
+                
+    // Choose the random place the fruit will appear
+    height = -200; // The starting height
+    pos = Math.floor((Math.random() * 520) + 0); // The starting position
+    $("#fruit1").css({'left':pos, 'top':height});
+    
+    // generate random step
+    step = Math.floor((Math.random() * 5) + 1);
 }
 
 // Stop the game image running;
