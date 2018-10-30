@@ -77,6 +77,11 @@ html {
     cursor: url('image/knife.cur'),auto;
 }
 
+#dino{
+    width: 600px;
+    height: 400px;
+}
+
 .items {
     display: none;
     position: absolute;
