@@ -22,6 +22,13 @@ var pos2;
 var step2;
 var action2;
 
+var timeout3;
+var fruitN3;
+var height3;
+var pos3;
+var step3;
+var action3;
+
 // Starting function
 $(function() {
     // Click the "Start" button
@@ -59,7 +66,12 @@ $(function() {
             // Make the first time out for the left side
             timeout2 = setTimeout(function(){
                 start2();
-            }, 30000);
+            }, 3000);
+            
+             // Make the first time out for the left side
+            timeout3 = setTimeout(function(){
+                start3();
+            }, 5000);
         }
     });
 });
