@@ -8,6 +8,7 @@ var action;
 var actionTime;
 var fruits = ['apple_1e8u1T', 'pitaya_3mQ0vM', 'banana_6cdZC1', 'cherry_6nVY4b', 'coconut_97k3sb', 'grape_5Xnl8f', 'jackfruit_1rxHXt', 'lemon_03HjVF', 'lime_4GlEZI', 'mango_9N759Q', 'orange_0OHXv3', 'melon_7Jwnka', 'papaya_09ewxR', 'peach_8pOqZW', 'pineapple_3WCJG2', 'rasberry_620MbM', 'strawberry_44KLr1', 'tomato_7dWxtx', 'durian_3zx2N0', 'carrot_2EOIRh', 'broccoli_8laV5x', 'asparagus_0ZuVdD', 'spinach_9af6jV', 'sock_8GYusW', 'bomb_3rdKRe', 'blackberry_6oWOLV', 'heart_4wc2Ef'];
 
+// The second stage of this project
 var fruitN1;
 
 // Starting function
@@ -99,7 +100,7 @@ function start() {
                 chooseItems(); //Choose random fruits and items
                 // Choose the random place the fruit will appear
    
-                height = -190; // The starting height
+                height = -200; // The starting height
                 pos = Math.floor((Math.random() * 520) + 0); // The starting position
                 $("#fruit1").css({'left':pos, 'top':height});
     
@@ -135,25 +136,11 @@ function stopImages() {
 
 // Start sending fruit
 function chooseItems() {
-    // Fruit that kid love to eat (+1) 1-17
-    fruitN1 = Math.floor((Math.random() * 27) + 0);
+    // Fruit that kid love to eat (+1) 0-16
+//    fruitN1 = Math.floor((Math.random() * 27) + 0);
+    fruitN1 = 26;
     $("#fruit1").attr('src', 'image/fruits/'+ fruits[fruitN1] +'.png');
-    
-    
-    // Vegetables that kid do not like (-1) --18+23
-    
-    
-    // Blackberry (+10) (Extra rare and fast, appear 5 times in 120 minute) --17
-    
-    // Sock(-3) (Appear 15 times in 120 minutes) --24
-    
-    // Bomb(lose right away) (Appear 10 times in 120 minutes) --25
-    
-    // Hearts(extra lives) (Appear 3 times in 120 minutes) --26
-    
-    
-    
-    
+
     // Style for the class of the image
     $(".items").width("70px");
 }
@@ -174,14 +161,55 @@ function explodeFruits() {
     // Play sound exploded fruit
     // Increase the point
 $("#fruit1").mouseover(function(){
-    // Inxrease score.
-    score += 1;
-    $("#scorevalue").html(score);
-    
     // Play the slicing sound effect
 //    document.getElementById("audio").play();
-    $("audio")[0].play();
     
-    // Start the next fruits
+    // Fruit that kid love to eat (+1) 0-16
+    if (fruitN1 >=0 && fruitN1 <= 16) {
+        // Inxrease score.
+        score += 1;
+        $("#scorevalue").html(score);
+        $("#audio")[0].play();    
+    } 
+    // Vegetables that kid do not like (-1) --17+22
+    else if (fruitN1 >=17 && fruitN1 <= 22) {
+        // Decrease score.
+        score -= 1;
+        $("#scorevalue").html(score);
+        $("#audio1")[0].play();    
+    } 
+    // Sock(-3) (Appear 15 times in 120 minutes) --23
+    else if (fruitN1 == 23) {
+        // Decrease score.
+        score -= 5;
+        $("#scorevalue").html(score);
+        $("#audio1")[0].play();    
+    } 
+    // Bomb(lose right away) (Appear 10 times in 120 minutes) --24
+    else if (fruitN1 == 24) {
+        // Decrease score.
+        score -= 10;
+        $("#scorevalue").html(score);
+        $("#audio2")[0].play();    
+        gameOver();
+    } 
+    // Blackberry (+10) (Extra rare and fast, appear 5 times in 120 minute) --25
+    else if (fruitN1 == 25) {
+        // Increase score.
+        score += 10;
+        $("#scorevalue").html(score);
+        $("#audio3")[0].play(); 
+    } 
+    // Hearts(extra lives) (Appear 3 times in 120 minutes) --26
+    else if (fruitN1 == 26) {
+        // Decrease score.
+        if (liveLeft < 6) {
+            liveLeft += 1;
+            addHearts();
+        }
+        $("#audio4")[0].play(); 
+    }
+    
+    // Start the next items
     explodeFruits();
 });
