@@ -231,11 +231,19 @@ html {
 
 #like {
     margin-top: 50px;
+    height: 250px;
+    width: 790px;
+}
+
+#dislike {
+    margin-top: 50px;
+    height: 110px;
+    width: 800px;
 }
 
 .drop {
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
 }
 
 .fruits {
