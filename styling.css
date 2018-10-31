@@ -12,7 +12,7 @@ html {
     margin: 30px auto 0px;
     position: relative;
     border-radius: 20px;
-    display: block;
+    display: none;
 }
 
 #score {
@@ -191,7 +191,7 @@ html {
     margin: 30px auto 0px;
     position: relative;
     border-radius: 20px;
-    display: none;
+    display: block;
 }
 
 .previous {
@@ -227,4 +227,22 @@ html {
 /*    left: 300px;*/
     margin: 35px 300px 15px 300px;
     font-family: Impact, Charcoal, sans-serif;
+}
+
+#like {
+    margin-top: 50px;
+}
+
+.drop {
+    width: 50px;
+    height: 50px;
+}
+
+.fruits {
+    margin-right: 20px;
+    text-align: center;
+    position:relative;
+/*    margin: 0px 15px 50px 65px;*/
+    float: left;
+    cursor: pointer;
 }
