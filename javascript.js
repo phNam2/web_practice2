@@ -67,18 +67,23 @@ $(function() {
             
             stop = false;
             
-            // Create random fruit
+            // Create random fruit from the top
             start1();
             
-            // Make the first time out for the left side
+            // Make the time out for the bottom
             timeout2 = setTimeout(function(){
                 start2();
-            }, 20000);
+            }, 30000);
             
-            // Make the first time out for the left side
+            // Make the time out for the left side
             timeout3 = setTimeout(function(){
                 start3();
-            }, 10000);
+            }, 60000);
+            
+            // Make the time out for the right side
+            timeout4 = setTimeout(function(){
+                start4();
+            }, 90000);
         }
     });
 });
@@ -190,7 +195,7 @@ function start3() {
         pos3 += step3;
         $("#fruit3").css('left', pos3);
         //Is the fruit too low?
-        if (height3 > 700) {
+        if (pos3  > 700) {
             //Yes
             // Reduce score and live when you miss neceessary item
             if (fruitN3<17 || fruitN3>24) {
@@ -226,7 +231,7 @@ function start4() {
         pos4 -= step4;
         $("#fruit4").css('left', pos4);
         //Is the fruit too low?
-        if (height4 < -90) {
+        if (pos4  < -90) {
             //Yes
             // Reduce score and live when you miss neceessary item
             if (fruitN4<17 || fruitN4>24) {
