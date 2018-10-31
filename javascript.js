@@ -323,7 +323,7 @@ function movingImages(id) {
         $(id).css({'left':pos1, 'top':height1});
     
         // generate random step
-        step1 = Math.floor((Math.random() * 5) + 1);
+        step1 = Math.floor((Math.random() * 4) + 1);
     }
     else if (id == "#fruit2") {
         fruitN2 = Math.floor((Math.random() * 27) + 0);
@@ -335,7 +335,7 @@ function movingImages(id) {
         $(id).css({'left':pos2, 'top':height2});
     
         // generate random step
-        step2 = Math.floor((Math.random() * 5) + 1);
+        step2 = Math.floor((Math.random() * 4) + 1);
     }
     else if (id == "#fruit3") {
         fruitN3 = Math.floor((Math.random() * 27) + 0);
