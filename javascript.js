@@ -170,6 +170,8 @@ function start1() {
                     addHearts();// Redraw the heart bar
                 }
                 else { // Game over
+                    liveLeft = 0;
+                    stop = true;
                     gameOver();
                 }   
             } else { // If not, continue playing
@@ -206,6 +208,8 @@ function start2() {
                     addHearts();// Redraw the heart bar
                 }
                 else { // Game over
+                    liveLeft = 0;
+                    stop = true;
                     gameOver();
                 }   
             } else { // If not, continue playing
@@ -242,6 +246,8 @@ function start3() {
                     addHearts();// Redraw the heart bar
                 }
                 else { // Game over
+                    liveLeft = 0;
+                    stop = true;
                     gameOver();
                 }   
             } else { // If not, continue playing
@@ -278,6 +284,8 @@ function start4() {
                     addHearts();// Redraw the heart bar
                 }
                 else { // Game over
+                    liveLeft = 0;
+                    stop = true;
                     gameOver();
                 }   
             } else { // If not, continue playing
