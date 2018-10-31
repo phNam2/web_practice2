@@ -97,17 +97,17 @@ $(function() {
             // Make the time out for the bottom
             timeout2 = setTimeout(function(){
                 start2();
-            }, 30000);
+            }, 20000);
             
             // Make the time out for the left side
             timeout3 = setTimeout(function(){
                 start3();
-            }, 60000);
+            }, 40000);
             
             // Make the time out for the right side
             timeout4 = setTimeout(function(){
                 start4();
-            }, 90000);
+            }, 60000);
         }
     });
 });
@@ -343,7 +343,7 @@ function movingImages(id) {
                 
         // Choose the random place the fruit will appear
         pos3 = -200; // The starting height
-        height3 = Math.floor((Math.random() * 320) + 20); // The starting position
+        height3 = Math.floor((Math.random() * 300) + 0); // The starting position
         $(id).css({'left':pos3, 'top':height3});
     
         // generate random step
@@ -355,7 +355,7 @@ function movingImages(id) {
                 
         // Choose the random place the fruit will appear
         pos4 = 800; // The starting height
-        height4 = Math.floor((Math.random() * 320) + 20); // The starting position
+        height4 = Math.floor((Math.random() * 300) + 0); // The starting position
         $(id).css({'left':pos4, 'top':height4});
     
         // generate random step
