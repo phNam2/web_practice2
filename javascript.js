@@ -49,6 +49,8 @@ $(function() {
             // No
             playing = true;
             
+            $("#questions").css('visibility', 'hidden');
+            
             // Make the scoreboard appear
             $("#score").show();
             score = 0;
@@ -266,6 +268,7 @@ function gameOver() {
     $("#over").show();
     $(".result").html(score);
     $("#lives").css('visibility', 'hidden');
+    $("#questions").css('visibility', 'visible');
     $("#time").hide();
     $("#score").hide();
     stopCounting();
