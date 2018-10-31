@@ -132,10 +132,10 @@ function start2() {
     
     //Move fruit down one step every 10ms
     action2 = setInterval(function(){
-        height2 += step2;
+        height2 -= step2;
         $("#fruit2").css('top', height2);
         //Is the fruit too low?
-        if (height2 > 400) {
+        if (height2 < -90) {
             //Yes
             // Reduce score and live when you miss neceessary item
             if (fruitN2<17 || fruitN2>24) {
@@ -168,6 +168,7 @@ function gameOver() {
     $("#time").hide();
     stopCounting();
     stopImages("#fruit1");
+    stopImages("#fruit2");
 }
 
 // Running images
@@ -189,7 +190,7 @@ function movingImages(id) {
         chooseItems(id, fruitN2); //Choose random fruits and items
                 
         // Choose the random place the fruit will appear
-        height2 = -200; // The starting height
+        height2 = 500; // The starting height
         pos2 = Math.floor((Math.random() * 520) + 0); // The starting position
         $(id).css({'left':pos2, 'top':height2});
     
