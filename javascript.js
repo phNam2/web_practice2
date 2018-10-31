@@ -36,6 +36,23 @@ var pos4;
 var step4;
 var action4;
 
+// Question function
+$(function() {
+   $("#questions").click(function() {
+       $("#container").hide();
+       $("#container1").show();
+   });
+});
+
+// Back function
+$(function() {
+   $("#back").click(function() {
+       $("#container1").hide();
+       $("#container").show()
+   });
+});
+
+
 // Starting function
 $(function() {
     // Click the "Start" button

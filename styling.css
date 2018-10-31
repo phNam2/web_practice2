@@ -1,6 +1,6 @@
 html {
     height: 100%;
-    background: linear-gradient(#2c62d6, #73efe7, #2c62d6);
+    background: linear-gradient(#0fa30d, #64d662, #066605);
     font-family: cursive;
 }
 
@@ -12,6 +12,7 @@ html {
     margin: 30px auto 0px;
     position: relative;
     border-radius: 20px;
+    display: block;
 }
 
 #score {
@@ -41,7 +42,7 @@ html {
 #questions {
     width: 40px;
     height: 40px;
-    background-color: #e28412;
+    background-color: #2c62d6;
     top: 0px;
     margin: 0px 10px;
     box-shadow: 0px 2px black;
@@ -180,4 +181,41 @@ html {
 #startReset:active {
     box-shadow: 0px 0px black;
     top: 3px;
+}
+
+#container1 {
+    width: 800px;
+    height: 600px;
+    background: radial-gradient(#73efe7, #2c62d6);
+    padding: 5px;
+    margin: 30px auto 0px;
+    position: relative;
+    border-radius: 20px;
+    display: none;
+}
+
+.previous {
+    font-family: cursive;
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px 16px;
+    left: 20px;
+    position: relative;
+    box-shadow: 0px 2px black;
+    background-color: #f1f1f1;
+    color: black;
+    padding: 8px 20px;
+    border-radius: 50%;
+    position: relative;
+}
+
+.previous:hover {
+    background-color: #1c1919;
+    color: white;
+    box-shadow: 0px 2px #8c7575;
+}
+
+.previous:active {
+    box-shadow: 0px 0px #8c7575;
+    top: 1px;
 }
