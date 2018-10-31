@@ -36,6 +36,25 @@ var pos4;
 var step4;
 var action4;
 
+var random;
+
+// Question function
+$(function() {
+   $("#questions").click(function() {
+       $("#container").hide();
+       $("#container1").show();
+   });
+});
+
+// Back function
+$(function() {
+   $("#back").click(function() {
+       $("#container1").hide();
+       $("#container").show()
+   });
+});
+
+
 // Starting function
 $(function() {
     // Click the "Start" button
@@ -75,25 +94,55 @@ $(function() {
             stop = false;
             
             // Create random fruit from the top
-            start1();
+            var sides = Math.floor((Math.random() * 4) + 1);
+            random = [sides];
+            release(sides);
             
             // Make the time out for the bottom
             timeout2 = setTimeout(function(){
-                start2();
-            }, 30000);
+                sides = Math.floor((Math.random() * 4) + 1);
+                while (random.indexOf(sides) > -1 ) {
+                    sides = Math.floor((Math.random() * 4) + 1);
+                }
+                random.push(sides);
+                release(sides);
+            }, 15000);
             
             // Make the time out for the left side
             timeout3 = setTimeout(function(){
-                start3();
-            }, 60000);
+                sides = Math.floor((Math.random() * 4) + 1);
+                while (random.indexOf(sides) > -1 ) {
+                    sides = Math.floor((Math.random() * 4) + 1);
+                }
+                random.push(sides);
+                release(sides);
+            }, 30000);
             
             // Make the time out for the right side
             timeout4 = setTimeout(function(){
-                start4();
-            }, 90000);
+                sides = Math.floor((Math.random() * 4) + 1);
+                while (random.indexOf(sides) > -1 ) {
+                    sides = Math.floor((Math.random() * 4) + 1);
+                }
+                random.push(sides);
+                release(sides);
+            }, 45000);
         }
     });
 });
+
+// Call for the sides 
+function release(sides){
+    if (sides==1) {
+        start1();
+    } else if (sides==2) {
+        start2();
+    } else if (sides==3) {
+        start3();
+    } else if (sides==4) {
+        start4();
+    }
+}
 
 // Start the counting clock for the game
 function startCounting(){
@@ -101,6 +150,13 @@ function startCounting(){
         timeRemaining -= 1;
         $("#timeLeft").html(timeRemaining);
         if (timeRemaining <= 0) {
+            
+            // The game over and not count for fruit anymore
+            stop = true;
+            
+            // When time run out, the number of heart will be counted as extra
+            score += liveLeft*10;
+            $("#scorevalue").html(score);
             gameOver();
         }
     }, 1000);
@@ -146,6 +202,8 @@ function start1() {
                     addHearts();// Redraw the heart bar
                 }
                 else { // Game over
+                    liveLeft = 0;
+                    stop = true;
                     gameOver();
                 }   
             } else { // If not, continue playing
@@ -182,6 +240,8 @@ function start2() {
                     addHearts();// Redraw the heart bar
                 }
                 else { // Game over
+                    liveLeft = 0;
+                    stop = true;
                     gameOver();
                 }   
             } else { // If not, continue playing
@@ -218,6 +278,8 @@ function start3() {
                     addHearts();// Redraw the heart bar
                 }
                 else { // Game over
+                    liveLeft = 0;
+                    stop = true;
                     gameOver();
                 }   
             } else { // If not, continue playing
@@ -254,6 +316,8 @@ function start4() {
                     addHearts();// Redraw the heart bar
                 }
                 else { // Game over
+                    liveLeft = 0;
+                    stop = true;
                     gameOver();
                 }   
             } else { // If not, continue playing
@@ -271,6 +335,7 @@ function gameOver() {
     $("#questions").css('visibility', 'visible');
     $("#time").hide();
     $("#score").hide();
+    $("#startReset").html("Start Over");
     stopCounting();
     stopImages("#fruit1");
     stopImages("#fruit2");
@@ -290,7 +355,7 @@ function movingImages(id) {
         $(id).css({'left':pos1, 'top':height1});
     
         // generate random step
-        step1 = Math.floor((Math.random() * 5) + 1);
+        step1 = Math.floor((Math.random() * 4) + 1);
     }
     else if (id == "#fruit2") {
         fruitN2 = Math.floor((Math.random() * 27) + 0);
@@ -302,7 +367,7 @@ function movingImages(id) {
         $(id).css({'left':pos2, 'top':height2});
     
         // generate random step
-        step2 = Math.floor((Math.random() * 5) + 1);
+        step2 = Math.floor((Math.random() * 4) + 1);
     }
     else if (id == "#fruit3") {
         fruitN3 = Math.floor((Math.random() * 27) + 0);
@@ -310,7 +375,7 @@ function movingImages(id) {
                 
         // Choose the random place the fruit will appear
         pos3 = -200; // The starting height
-        height3 = Math.floor((Math.random() * 320) + 20); // The starting position
+        height3 = Math.floor((Math.random() * 300) + 0); // The starting position
         $(id).css({'left':pos3, 'top':height3});
     
         // generate random step
@@ -322,7 +387,7 @@ function movingImages(id) {
                 
         // Choose the random place the fruit will appear
         pos4 = 800; // The starting height
-        height4 = Math.floor((Math.random() * 320) + 20); // The starting position
+        height4 = Math.floor((Math.random() * 300) + 0); // The starting position
         $(id).css({'left':pos4, 'top':height4});
     
         // generate random step
@@ -433,7 +498,10 @@ $("#fruit1").mouseover(function(){
     } 
     // Hearts(extra lives) (Appear 3 times in 120 minutes) --26
     else if (fruitN1 == 26) {
-        // Decrease score.
+        // Increase score.
+        score += 7;
+        $("#scorevalue").html(score);
+        
         if (liveLeft < 6) {
             liveLeft += 1;
             addHearts();
@@ -489,7 +557,10 @@ $("#fruit2").mouseover(function(){
     } 
     // Hearts(extra lives) (Appear 3 times in 120 minutes) --26
     else if (fruitN2 == 26) {
-        // Decrease score.
+        // Increase score.
+        score += 7;
+        $("#scorevalue").html(score);
+        
         if (liveLeft < 6) {
             liveLeft += 1;
             addHearts();
@@ -545,7 +616,10 @@ $("#fruit3").mouseover(function(){
     } 
     // Hearts(extra lives) (Appear 3 times in 120 minutes) --26
     else if (fruitN3 == 26) {
-        // Decrease score.
+        // Increase score.
+        score += 7;
+        $("#scorevalue").html(score);
+        
         if (liveLeft < 6) {
             liveLeft += 1;
             addHearts();
@@ -600,7 +674,10 @@ $("#fruit4").mouseover(function(){
     } 
     // Hearts(extra lives) (Appear 3 times in 120 minutes) --26
     else if (fruitN4 == 26) {
-        // Decrease score.
+        // Increase score.
+        score += 7;
+        $("#scorevalue").html(score);
+        
         if (liveLeft < 6) {
             liveLeft += 1;
             addHearts();
