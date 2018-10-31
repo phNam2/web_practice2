@@ -466,7 +466,10 @@ $("#fruit1").mouseover(function(){
     } 
     // Hearts(extra lives) (Appear 3 times in 120 minutes) --26
     else if (fruitN1 == 26) {
-        // Decrease score.
+        // Increase score.
+        score += 7;
+        $("#scorevalue").html(score);
+        
         if (liveLeft < 6) {
             liveLeft += 1;
             addHearts();
@@ -522,7 +525,10 @@ $("#fruit2").mouseover(function(){
     } 
     // Hearts(extra lives) (Appear 3 times in 120 minutes) --26
     else if (fruitN2 == 26) {
-        // Decrease score.
+        // Increase score.
+        score += 7;
+        $("#scorevalue").html(score);
+        
         if (liveLeft < 6) {
             liveLeft += 1;
             addHearts();
@@ -578,7 +584,10 @@ $("#fruit3").mouseover(function(){
     } 
     // Hearts(extra lives) (Appear 3 times in 120 minutes) --26
     else if (fruitN3 == 26) {
-        // Decrease score.
+        // Increase score.
+        score += 7;
+        $("#scorevalue").html(score);
+        
         if (liveLeft < 6) {
             liveLeft += 1;
             addHearts();
