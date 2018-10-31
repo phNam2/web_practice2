@@ -22,6 +22,13 @@ var pos2;
 var step2;
 var action2;
 
+var timeout3;
+var fruitN3;
+var height3;
+var pos3;
+var step3;
+var action3;
+
 // Starting function
 $(function() {
     // Click the "Start" button
@@ -60,6 +67,11 @@ $(function() {
             timeout2 = setTimeout(function(){
                 start2();
             }, 20000);
+            
+            // Make the first time out for the left side
+            timeout3 = setTimeout(function(){
+                start3();
+            }, 10000);
         }
     });
 });
@@ -160,6 +172,42 @@ function start2() {
     }, 10);
 }
 
+// Start the game items drop from the left
+function start3() {
+    
+    $("#fruit3").show();
+    movingImages("#fruit3");
+    
+    //Move fruit down one step every 10ms
+    action3 = setInterval(function(){
+        pos3 += step3;
+        $("#fruit3").css('left', pos3);
+        //Is the fruit too low?
+        if (height3 > 700) {
+            //Yes
+            // Reduce score and live when you miss neceessary item
+            if (fruitN3<17 || fruitN3>24) {
+                if (stop == false) {
+                    score -= 1;   
+                }
+                $("#scorevalue").html(score);
+                // Is the plyer still have lives left
+                if (liveLeft > 1) {
+                    movingImages("#fruit3");
+                    // Reduce the live left
+                    liveLeft -= 1;
+                    addHearts();// Redraw the heart bar
+                }
+                else { // Game over
+                    gameOver();
+                }   
+            } else { // If not, continue playing
+                movingImages("#fruit3");
+            }
+        }
+    }, 10);
+}
+
 // When the game is over
 function gameOver() {
     $("#over").show();
@@ -169,6 +217,7 @@ function gameOver() {
     stopCounting();
     stopImages("#fruit1");
     stopImages("#fruit2");
+    stopImages("#fruit3");
 }
 
 // Running images
@@ -190,12 +239,24 @@ function movingImages(id) {
         chooseItems(id, fruitN2); //Choose random fruits and items
                 
         // Choose the random place the fruit will appear
-        height2 = 500; // The starting height
+        height2 = 700; // The starting height
         pos2 = Math.floor((Math.random() * 520) + 0); // The starting position
         $(id).css({'left':pos2, 'top':height2});
     
         // generate random step
         step2 = Math.floor((Math.random() * 5) + 1);
+    }
+    else if (id == "#fruit3") {
+        fruitN3 = Math.floor((Math.random() * 27) + 0);
+        chooseItems(id, fruitN3); //Choose random fruits and items
+                
+        // Choose the random place the fruit will appear
+        pos3 = -200; // The starting height
+        height3 = Math.floor((Math.random() * 320) + 20); // The starting position
+        $(id).css({'left':pos3, 'top':height3});
+    
+        // generate random step
+        step3 = Math.floor((Math.random() * 5) + 1);
     }
 }
 
@@ -206,6 +267,9 @@ function stopImages(id) {
     }
     else if (id == "#fruit2") {
         clearInterval(action2);
+    }
+    else if (id == "#fruit3") {
+        clearInterval(action3);
     }
     $(id).hide();
 }
@@ -233,6 +297,12 @@ function explodeFruits(id) {
         $(id).hide("explode", 200);
 
         setTimeout(start2, 500);
+    }
+    else if (id == "#fruit3") {
+        clearInterval(action3);
+        $(id).hide("explode", 200);
+
+        setTimeout(start3, 500);
     }
 }
 
@@ -350,4 +420,60 @@ $("#fruit2").mouseover(function(){
     
     // Start the next items
     explodeFruits("#fruit2");
+});
+
+
+$("#fruit3").mouseover(function(){
+    
+    // Fruit that kid love to eat (+1) 0-16
+    if (fruitN3 >=0 && fruitN3 <= 16) {
+        // Inxrease score.
+        score += 1;
+        $("#scorevalue").html(score);
+        $("#audio")[0].play();    
+    } 
+    // Vegetables that kid do not like (-1) --17+22
+    else if (fruitN3 >=17 && fruitN3 <= 22) {
+        // Decrease score.
+        score -= 1;
+        $("#scorevalue").html(score);
+        $("#audio1")[0].play();    
+    } 
+    // Sock(-3) (Appear 15 times in 120 minutes) --23
+    else if (fruitN3 == 23) {
+        // Decrease score.
+        score -= 3;
+        $("#scorevalue").html(score);
+        $("#audio1")[0].play();    
+    } 
+    // Bomb(lose right away) (Appear 10 times in 120 minutes) --24
+    else if (fruitN3 == 24) {
+        // Decrease score.
+        score -= 10;
+        $("#scorevalue").html(score);
+        $("#audio2")[0].play(); 
+        
+        stop = true;
+        liveLeft = 0;
+        gameOver()
+    } 
+    // Blackberry (+10) (Extra rare and fast, appear 5 times in 120 minute) --25
+    else if (fruitN3 == 25) {
+        // Increase score.
+        score += 10;
+        $("#scorevalue").html(score);
+        $("#audio3")[0].play(); 
+    } 
+    // Hearts(extra lives) (Appear 3 times in 120 minutes) --26
+    else if (fruitN3 == 26) {
+        // Decrease score.
+        if (liveLeft < 6) {
+            liveLeft += 1;
+            addHearts();
+        }
+        $("#audio4")[0].play(); 
+    }
+    
+    // Start the next items
+    explodeFruits("#fruit3");
 });
