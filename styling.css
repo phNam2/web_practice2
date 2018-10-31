@@ -12,7 +12,7 @@ html {
     margin: 30px auto 0px;
     position: relative;
     border-radius: 20px;
-    display: none;
+    display: black;
 }
 
 #score {
@@ -191,7 +191,7 @@ html {
     margin: 0px auto 0px;
     position: relative;
     border-radius: 20px;
-    display: block;
+    display: none;
 }
 
 .previous {
