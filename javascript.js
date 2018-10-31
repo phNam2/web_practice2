@@ -48,10 +48,15 @@ $(function() {
         } else {
             // No
             playing = true;
+            
+            // Make the scoreboard appear
+            $("#score").show();
             score = 0;
             $("#scorevalue").html(score);
             
             $("#over").hide();
+            
+            $("#startReset").html("Reset");
             
             // show the "Lives box"
 //            $("#lives").show();
@@ -262,6 +267,7 @@ function gameOver() {
     $(".result").html(score);
     $("#lives").css('visibility', 'hidden');
     $("#time").hide();
+    $("#score").hide();
     stopCounting();
     stopImages("#fruit1");
     stopImages("#fruit2");
