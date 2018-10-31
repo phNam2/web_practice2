@@ -303,6 +303,7 @@ function gameOver() {
     $("#questions").css('visibility', 'visible');
     $("#time").hide();
     $("#score").hide();
+    $("#startReset").html("Start Over");
     stopCounting();
     stopImages("#fruit1");
     stopImages("#fruit2");
