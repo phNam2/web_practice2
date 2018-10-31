@@ -73,7 +73,7 @@ html {
     top: 495px;
     left: 700px;
     margin: 0px 10px;
-    box-shadow: 0px 2px black;
+    box-shadow: 0px 4px #700e0c;
     position:absolute;
     text-align: center;
     line-height: 2.5;
