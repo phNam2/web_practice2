@@ -106,7 +106,7 @@ $(function() {
                 }
                 random.push(sides);
                 release(sides);
-            }, 20000);
+            }, 15000);
             
             // Make the time out for the left side
             timeout3 = setTimeout(function(){
@@ -116,7 +116,7 @@ $(function() {
                 }
                 random.push(sides);
                 release(sides);
-            }, 40000);
+            }, 30000);
             
             // Make the time out for the right side
             timeout4 = setTimeout(function(){
@@ -126,7 +126,7 @@ $(function() {
                 }
                 random.push(sides);
                 release(sides);
-            }, 60000);
+            }, 45000);
         }
     });
 });
