@@ -36,6 +36,8 @@ var pos4;
 var step4;
 var action4;
 
+var random;
+
 // Question function
 $(function() {
    $("#questions").click(function() {
@@ -92,25 +94,55 @@ $(function() {
             stop = false;
             
             // Create random fruit from the top
-            start1();
+            var sides = Math.floor((Math.random() * 4) + 1);
+            random = [sides];
+            release(sides);
             
             // Make the time out for the bottom
             timeout2 = setTimeout(function(){
-                start2();
+                sides = Math.floor((Math.random() * 4) + 1);
+                while (random.indexOf(sides) > -1 ) {
+                    sides = Math.floor((Math.random() * 4) + 1);
+                }
+                random.push(sides);
+                release(sides);
             }, 20000);
             
             // Make the time out for the left side
             timeout3 = setTimeout(function(){
-                start3();
+                sides = Math.floor((Math.random() * 4) + 1);
+                while (random.indexOf(sides) > -1 ) {
+                    sides = Math.floor((Math.random() * 4) + 1);
+                }
+                random.push(sides);
+                release(sides);
             }, 40000);
             
             // Make the time out for the right side
             timeout4 = setTimeout(function(){
-                start4();
+                sides = Math.floor((Math.random() * 4) + 1);
+                while (random.indexOf(sides) > -1 ) {
+                    sides = Math.floor((Math.random() * 4) + 1);
+                }
+                random.push(sides);
+                release(sides);
             }, 60000);
         }
     });
 });
+
+// Call for the sides 
+function release(sides){
+    if (sides==1) {
+        start1();
+    } else if (sides==2) {
+        start2();
+    } else if (sides==3) {
+        start3();
+    } else if (sides==4) {
+        start4();
+    }
+}
 
 // Start the counting clock for the game
 function startCounting(){
