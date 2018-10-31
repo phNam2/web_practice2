@@ -118,6 +118,13 @@ function startCounting(){
         timeRemaining -= 1;
         $("#timeLeft").html(timeRemaining);
         if (timeRemaining <= 0) {
+            
+            // The game over and not count for fruit anymore
+            stop = true;
+            
+            // When time run out, the number of heart will be counted as extra
+            score += liveLeft*10;
+            $("#scorevalue").html(score);
             gameOver();
         }
     }, 1000);
@@ -617,7 +624,10 @@ $("#fruit4").mouseover(function(){
     } 
     // Hearts(extra lives) (Appear 3 times in 120 minutes) --26
     else if (fruitN4 == 26) {
-        // Decrease score.
+        // Increase score.
+        score += 7;
+        $("#scorevalue").html(score);
+        
         if (liveLeft < 6) {
             liveLeft += 1;
             addHearts();
