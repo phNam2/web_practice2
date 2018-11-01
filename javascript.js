@@ -207,6 +207,10 @@ function start1() {
                     gameOver();
                 }   
             } else { // If not, continue playing
+                if (stop == false) {
+                    score += 1;   
+                }
+                $("#scorevalue").html(score);
                 movingImages("#fruit1");
             }
         }
@@ -245,6 +249,10 @@ function start2() {
                     gameOver();
                 }   
             } else { // If not, continue playing
+                if (stop == false) {
+                    score += 1;   
+                }
+                $("#scorevalue").html(score);
                 movingImages("#fruit2");
             }
         }
@@ -283,6 +291,10 @@ function start3() {
                     gameOver();
                 }   
             } else { // If not, continue playing
+                if (stop == false) {
+                    score += 1;   
+                }
+                $("#scorevalue").html(score);
                 movingImages("#fruit3");
             }
         }
@@ -321,6 +333,10 @@ function start4() {
                     gameOver();
                 }   
             } else { // If not, continue playing
+                if (stop == false) {
+                    score += 1;   
+                }
+                $("#scorevalue").html(score);
                 movingImages("#fruit4");
             }
         }
