@@ -12,7 +12,7 @@ html {
     margin: 30px auto 0px;
     position: relative;
     border-radius: 20px;
-    display: black;
+    display: block;
 }
 
 #score {
@@ -263,6 +263,22 @@ html {
     position:relative;
 /*    margin: 0px 15px 50px 65px;*/
     float: left;
+}
+
+a {
+    text-decoration: none;
+}
+
+#like .fruits p {
+    color: white;
+}
+
+#dislike .fruits p {
+    color: black;
+}
+
+#special .fruits p {
+    color: black;
 }
 
 .lol {
